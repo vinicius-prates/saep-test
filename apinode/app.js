@@ -130,7 +130,6 @@ app.post('/automovel/:id', (req, res) => {
         res.statusCode = 200
     })
 
-    db.close()
     res.send("Finalizado")
 })
 

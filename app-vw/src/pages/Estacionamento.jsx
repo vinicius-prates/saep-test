@@ -12,6 +12,7 @@ const Estacionamento = () => {
     const [idAreaSelecionada, setArea] = useState();
     const [clientes, setClientes] = useState([]);
     const [concessionarias, setCSS] = useState([]);
+    const [veiculoId, setVeiculoId] = useState();
 
 
     useEffect(() => {
@@ -58,7 +59,7 @@ const Estacionamento = () => {
         axios.get("http://127.0.0.1:5000/alocacao/" + id).then((response) => {
             console.log(response)       
             setVeiculos(response.data)
-            console.log(veiculos)
+            
         })
     }
 
@@ -66,12 +67,25 @@ const Estacionamento = () => {
         setModalArea(false)
         setModalVenda(true)
         setVeiculo(veiculo)
+        setVeiculoId(id)
         axios.get("http://127.0.0.1:5000/concessionaria/" + id).then((response) => {
             console.log(response)       
             setCSS(response.data)
+            console.log(response.data)
         })
 
 
+    }
+    
+    const confirmarVenda = (id) => {
+        axios.post("http://127.0.0.1:5000/automovel/" + id).then((res) => {
+            console.log(res)
+            
+            setModalVenda(false)
+            
+            setVeiculo(res.data)
+            
+        })
     }
 
     return ( 
@@ -100,19 +114,19 @@ const Estacionamento = () => {
                     <div>
                     <select onChange={selecionarCliente}>
                         <option value=""> -- Selecionar Cliente -- </option>
-                        {clientes.map((item) => (
+                        {clientes.length > 0 && clientes.map((item) => (
                         <option value={item.id}>{item.Nome}</option>
                         ))}
                     </select>
 
                      <select onChange={selecionarCSS}>
                         <option value=""> -- Selecionar Concessionária -- </option>
-                        {concessionarias.map((item) => (
+                        {concessionarias.length > 0 && concessionarias.map((item) => (
                         <option value={item.id}>{item.nome}</option>
                         ))}
                     </select>                   
 
-                    <button>Confirmar</button>
+                    <button onClick={() => confirmarVenda(veiculoId)}>Confirmar</button>
 
 
                     </div>
