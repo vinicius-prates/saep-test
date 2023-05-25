@@ -108,6 +108,7 @@ const Estacionamento = () => {
                             </div>
                         ))
                     ) : null}
+                    <button onClick={() => setModalArea(false)}>Fechar</button>
                 </div>
             </div>
             <div className={ modalVenda ? 'modal-area block' : 'modal-area hidden' } >
@@ -130,7 +131,7 @@ const Estacionamento = () => {
                     </select>                   
                 
                     <button onClick={() => confirmarVenda(veiculoId)} disabled={cliente == "" || concessionaria == ""}>Confirmar</button>
-
+                    <button onClick={() => setModalVenda(false)}>Fechar</button>
 
                     </div>
                 </div>
@@ -175,11 +176,11 @@ const Estacionamento = () => {
                 </div>
                 <div className='direita'>
                     <div className={'galpao es-6 ' + (pesquisar(6) > 0 ? 'active' : null)} 
-                        onClick={() => alert("funcionou")}
+                        onClick={() => exibirModal(6)}
                     >
                         6 
                     </div>
-                    <div className={'galpao es-10 ' + (pesquisar(10) > 0 ? 'active' : null)}>
+                    <div onClick={() => exibirModal(10)} className={'galpao es-10 ' + (pesquisar(10) > 0 ? 'active' : null)}>
                         10
                     </div>
                 </div>

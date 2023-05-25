@@ -58,6 +58,7 @@
   padding: 20px;
 }
 .modal button {
+  margin: 1px;
   background: #323232;
   color: #fff;
 }
