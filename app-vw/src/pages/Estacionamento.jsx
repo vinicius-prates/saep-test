@@ -13,6 +13,8 @@ const Estacionamento = () => {
     const [clientes, setClientes] = useState([]);
     const [concessionarias, setCSS] = useState([]);
     const [veiculoId, setVeiculoId] = useState();
+    const [cliente, setCliente] = useState("")
+    const [concessionaria, setConcessionaria] = useState("")
 
 
     useEffect(() => {
@@ -43,12 +45,12 @@ const Estacionamento = () => {
         }
     }
 
-    const selecionarCliente = () => {
-
+    const selecionarCliente = (value) => {
+        setCliente(value)
     }
 
-    const selecionarCSS = () => {
-
+    const selecionarCSS = (value) => {
+        setConcessionaria(value)
     }
 
     const exibirModal = (id) => {
@@ -97,6 +99,7 @@ const Estacionamento = () => {
 
                     {veiculos.length > 0 ? (
                         veiculos.map((item) => (
+                            item.quantidade > 0 &&
                             <div>
                                 Modelo: {item.modelo} | Preço { item.preco}
                                 <button type='button' onClick={() => vender(item.id, item.modelo)}>
@@ -112,21 +115,21 @@ const Estacionamento = () => {
                     {veiculo}
 
                     <div>
-                    <select onChange={selecionarCliente}>
+                    <select onChange={(e) =>selecionarCliente(e.target.value)}>
                         <option value=""> -- Selecionar Cliente -- </option>
                         {clientes.length > 0 && clientes.map((item) => (
                         <option value={item.id}>{item.Nome}</option>
                         ))}
                     </select>
 
-                     <select onChange={selecionarCSS}>
+                     <select onChange={(e) => selecionarCSS(e.target.value)}>
                         <option value=""> -- Selecionar Concessionária -- </option>
                         {concessionarias.length > 0 && concessionarias.map((item) => (
                         <option value={item.id}>{item.nome}</option>
                         ))}
                     </select>                   
-
-                    <button onClick={() => confirmarVenda(veiculoId)}>Confirmar</button>
+                
+                    <button onClick={() => confirmarVenda(veiculoId)} disabled={cliente == "" || concessionaria == ""}>Confirmar</button>
 
 
                     </div>
@@ -136,37 +139,37 @@ const Estacionamento = () => {
 
             <div className='bloco-8-9-11'>
                 <div className='bloco-11'>
-                    <div className={'galpao es-8 ' + (pesquisar(8) > 0 ? 'active' : null)}>
+                    <div onClick={() => exibirModal(11)} className={'galpao es-8 ' + (pesquisar(8) > 0 ? 'active' : null)}>
                         11
                     </div>
                 </div>
                 <div className='bloco-89'>
-                    <div className={'galpao es-8 ' + (pesquisar(8) > 0 ? 'active' : null)}>
+                    <div onClick={() => exibirModal(8)} className={'galpao es-8 ' + (pesquisar(8) > 0 ? 'active' : null)}>
                         8
                     </div>
-                    <div className={'galpao es-9 ' + (pesquisar(9) > 0 ? 'active' : null)}>
+                    <div onClick={() => exibirModal(9)} className={'galpao es-9 ' + (pesquisar(9) > 0 ? 'active' : null)}>
                         9
                     </div>
                 </div>
             </div><div className='base'>
-                    <div className={'galpao es-7 ' + (pesquisar(7) > 0 ? 'active' : null)}>
+                    <div onClick={() => exibirModal(7)} className={'galpao es-7 ' + (pesquisar(7) > 0 ? 'active' : null)}>
                         7
                     </div>
-                    <div className={'galpao es-4 ' + (pesquisar(4) > 0 ? 'active' : null)}>
+                    <div onClick={() => exibirModal(4)} className={'galpao es-4 ' + (pesquisar(4) > 0 ? 'active' : null)}>
                         4
                     </div>
-                    <div className={'galpao es-1 ' + (pesquisar(1) > 0 ? 'active' : null)} 
-                    onClick={() => exibirModal(1)}>
+                    <div onClick={() => exibirModal(1)} className={'galpao es-1 ' + (pesquisar(1) > 0 ? 'active' : null)} 
+                    >
                         1
                     </div>
-                    <div className={'galpao es-3 ' + (pesquisar(3) > 0 ? 'active' : null)}>
+                    <div onClick={() => exibirModal(3)} className={'galpao es-3 ' + (pesquisar(3) > 0 ? 'active' : null)}>
                         3
                     </div>
-                    <div className={'galpao es-2 ' + (pesquisar(2) > 0 ? 'active' : null)} >
+                    <div onClick={() => exibirModal(2)} className={'galpao es-2 ' + (pesquisar(2) > 0 ? 'active' : null)} >
                         2
 
                     </div>
-                    <div className={'galpao es-5 ' + (pesquisar(5) > 0 ? 'active' : null)} >
+                    <div onClick={() => exibirModal(5)} className={'galpao es-5 ' + (pesquisar(5) > 0 ? 'active' : null)} >
                         5
                     </div>
                 </div>
