@@ -1,0 +1,105 @@
+.galpao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    background: #fff;
+}
+.es-1{
+    width: 200px;
+    height: 200px;
+    margin-top: 40px;
+    position: absolute;
+    z-index: 4;
+    margin-left: -250px;
+}
+.es-3{
+    width: 250px;
+    height: 400px;
+    margin-top: 70px;
+    position: absolute;
+    z-index: 3;
+    margin-left: -160px;
+}
+.es-2{
+    width: 70px;
+    height: 120px;
+    margin-top: 90px;
+    position: absolute;
+    z-index: 1;
+    margin-left: 0px;
+}
+.es-5{
+    width: 370px;
+    height: 470px;
+    margin-top: 0px;
+    position: absolute;
+    z-index: 2;
+    margin-left: 20px;
+}
+.es-11{
+    width: 60px;
+    height: 90px;
+}
+.es-8{
+    width: 100px;
+    height: 70px;
+}
+.es-9{
+    width: 120px;
+    height: 90px;
+}
+.es-4{
+    width: 130px;
+    height: 80px;
+    position: absolute;
+    margin-left: -100px;
+    z-index: 5;
+}
+
+.es-7{
+    width: 120px;
+    height: 70px;
+    position: absolute;
+    margin-top: -40px;
+    margin-left: 30px;
+    z-index: 6;
+}
+.direita{
+    position: absolute;
+    top: 0;
+    margin-top: 30px;
+    margin-left: 300px;
+    z-index: 1;
+}
+.es-10{
+    width: 350px;
+    height: 700px;
+}
+.es-6{
+    width: 140px;
+    height: 50px;
+    margin-top: 0px;
+    position: absolute;
+    margin-left: 210px;
+}
+.bloco-89{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.bloco-11{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.base{
+    margin-top: 100px;
+    height: 700px;
+}
+
+.active{
+    background:blue;
+}
